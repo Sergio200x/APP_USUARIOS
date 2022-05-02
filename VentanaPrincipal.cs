@@ -108,7 +108,7 @@ namespace APP_USUARIOS
                 try
                 {
                     int flag = 0;
-                    string query = "Update web_usuarios set usuclave='"+usuarioseleccionado.Text+"'";
+                    string query = "Update web_usuarios set usuclave='"+usuarioseleccionado.Text+"' where usucodigo='"+ usuarioseleccionado.Text + "'";
                     SqlCommand comando = new SqlCommand(query,conexion);
                     flag = comando.ExecuteNonQuery();
                     conexion.Close();
