@@ -34,22 +34,21 @@ namespace APP_USUARIOS
                 }
                 try
                 {                    
-                    string Query = "select usucodigo, usuclave from cinettickets.dbo.web_usuarios where usucodigo='" + textBox1.Text + "' and usuclave='" + textBox2.Text + "'";
+                                    
+                    string Query = "select usucodigo, usuclave from cinettickets.dbo.web_usuarios where usucodigo='" + textBox1.Text + "' and usuclave='" + textBox2.Text + "' and usupermisos>0";
                     SqlCommand cmd = new SqlCommand(Query, conexion);
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    
-                    if (dr.Read())
+                    SqlDataReader dr = cmd.ExecuteReader();                  
+
+                     if (dr.Read())
                     {
                         this.Hide();
                         VentanaPrincipal v1 = new VentanaPrincipal();
                         v1.Show();
-                        
                     }
                     else 
                     {
                         MessageBox.Show("Verificar Usuario y contraseña");
                     }
-
                     conexion.Close();
                 }
                 catch (Exception)
@@ -69,7 +68,7 @@ namespace APP_USUARIOS
             Application.Exit();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        public void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

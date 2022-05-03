@@ -44,7 +44,7 @@ namespace APP_USUARIOS
                 }
                 try
                 {
-                    string query = "select rtrim(ltrim(usuCodigo)) as Usuario, rtrim(ltrim(usuMail)) as Mail from cinettickets.dbo.web_usuarios where usucodigo like '%"+textBox1.Text+"%'";
+                    string query = "select rtrim(ltrim(usuCodigo)) as Usuario, rtrim(ltrim(usuMail)) as Mail from cinettickets.dbo.web_usuarios where usucodigo like '%"+textBox1.Text+"%' and usupermisos<1";
                     SqlCommand comand = new SqlCommand(query,conexion);
                     SqlDataAdapter resultadoQuery = new SqlDataAdapter(comand);
                     DataTable tabla = new DataTable();
@@ -108,7 +108,7 @@ namespace APP_USUARIOS
                 try
                 {
                     int flag = 0;
-                    string query = "Update web_usuarios set usuclave='"+usuarioseleccionado.Text+"' where usucodigo='"+ usuarioseleccionado.Text + "'";
+                    string query = "Update web_usuarios set usuclave='"+usuarioseleccionado.Text+ "' where usucodigo='" + usuarioseleccionado.Text + "'";
                     SqlCommand comando = new SqlCommand(query,conexion);
                     flag = comando.ExecuteNonQuery();
                     conexion.Close();
