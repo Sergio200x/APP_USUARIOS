@@ -13,7 +13,7 @@ namespace APP_USUARIOS
 {
     public partial class Login : Form
     {
-        static string conexionstring = "server= cinettickets.ddns.net ; user=sa; password=mandragora15 ; database=cinettickets ;integrated security=false";
+        static string conexionstring = "server= pc-casa-escrito ; user=sergio; password=roketpower ; database=cinettickets ;integrated security=true";
         SqlConnection conexion = new SqlConnection(conexionstring);
         public Login()
         {
@@ -33,23 +33,26 @@ namespace APP_USUARIOS
                     MessageBox.Show("No se pudo conectar con la base de datos");
                 }
                 try
-                {                    
-                                    
-                    string Query = "select usucodigo, usuclave from cinettickets.dbo.web_usuarios where usucodigo='" + textBox1.Text + "' and usuclave='" + textBox2.Text + "' and usupermisos>0";
-                    SqlCommand cmd = new SqlCommand(Query, conexion);
-                    SqlDataReader dr = cmd.ExecuteReader();                  
+                {
 
-                     if (dr.Read())
+                    string Query = "select usucodigo, usuclave from cinettickets.dbo.web_usuarios where usucodigo= '" + ((textBox1.Text.Replace("'"," ")).Replace(";"," ")).Replace("."," ") + "' and usuclave='" + ((textBox2.Text.Replace("'", " ")).Replace(";", " ")).Replace(".", " ") + "' and usupermisos>0";
+
+                    SqlCommand cmd = new SqlCommand(Query, conexion);
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    if (dr.Read())
                     {
                         this.Hide();
                         VentanaPrincipal v1 = new VentanaPrincipal();
-                        v1.Show();
+                        v1.Show();                       
+
                     }
-                    else 
+                    else
                     {
                         MessageBox.Show("Verificar Usuario y contraseña");
                     }
                     conexion.Close();
+                    
                 }
                 catch (Exception)
                 {
@@ -71,6 +74,11 @@ namespace APP_USUARIOS
         public void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace APP_USUARIOS
 {
     public partial class VentanaPrincipal : Form
     {
-        static string conexionstring = "server= cinettickets.ddns.net ; user=sa; password=mandragora15 ; database=cinettickets ;integrated security=false";
+        static string conexionstring = "server= pc-casa-escrito ; user=sergio; password=roketpower ; database=cinettickets ;integrated security=true";
         SqlConnection conexion = new SqlConnection(conexionstring);
         public VentanaPrincipal()
         {
@@ -44,7 +44,7 @@ namespace APP_USUARIOS
                 }
                 try
                 {
-                    string query = "select rtrim(ltrim(usuCodigo)) as Usuario, rtrim(ltrim(usuMail)) as Mail from cinettickets.dbo.web_usuarios where usucodigo like '%"+textBox1.Text+"%' and usupermisos<1";
+                    string query = "select rtrim(ltrim(usuCodigo)) as Usuario, rtrim(ltrim(usuMail)) as Mail from cinettickets.dbo.web_usuarios where usucodigo like '%"+((textBox1.Text.Replace("'", " ")).Replace(";", " ")).Replace(".", " ") + "%' and usupermisos<1";
                     SqlCommand comand = new SqlCommand(query,conexion);
                     SqlDataAdapter resultadoQuery = new SqlDataAdapter(comand);
                     DataTable tabla = new DataTable();
@@ -76,7 +76,7 @@ namespace APP_USUARIOS
         {
             try
             {
-                string valorUsuario = dataGridView1.CurrentCell.Value.ToString();
+                string valorUsuario = dataGridView1.CurrentCell.Value.ToString(); 
 
                 if (valorUsuario != "")
                 {
@@ -108,7 +108,7 @@ namespace APP_USUARIOS
                 try
                 {
                     int flag = 0;
-                    string query = "Update web_usuarios set usuclave='"+usuarioseleccionado.Text+ "' where usucodigo='" + usuarioseleccionado.Text + "'";
+                    string query = "Update web_usuarios set usuclave='"+((usuarioseleccionado.Text.Replace("'", " ")).Replace(";", " ")).Replace(".", " ") + "' where usucodigo='" + ((usuarioseleccionado.Text.Replace("'", " ")).Replace(";", " ")).Replace(".", " ") + "'";
                     SqlCommand comando = new SqlCommand(query,conexion);
                     flag = comando.ExecuteNonQuery();
                     conexion.Close();
@@ -136,6 +136,11 @@ namespace APP_USUARIOS
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void VentanaPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
