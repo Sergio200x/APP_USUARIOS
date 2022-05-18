@@ -13,7 +13,7 @@ namespace APP_USUARIOS
 {
     public partial class Login : Form
     {
-        static string conexionstring = "server= pc-casa-escrito ; user=sergio; password=roketpower ; database=cinettickets ;integrated security=true";
+        static string conexionstring = "server=cinettickets.ddns.net ; user=sa; password=mandragora15 ; database=cinettickets ;integrated security=false";
         SqlConnection conexion = new SqlConnection(conexionstring);
         public Login()
         {
@@ -22,7 +22,7 @@ namespace APP_USUARIOS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text!="" & textBox2.Text!="")
+            if(((textBox1.Text.Replace("'", "")).Replace(";", "")).Replace("*", "") != "" & ((textBox2.Text.Replace("'", "")).Replace(";", "")).Replace("*", "")!="")
             {
                 try
                 {
@@ -35,7 +35,7 @@ namespace APP_USUARIOS
                 try
                 {
 
-                    string Query = "select usucodigo, usuclave from cinettickets.dbo.web_usuarios where usucodigo= '" + ((textBox1.Text.Replace("'"," ")).Replace(";"," ")).Replace("."," ") + "' and usuclave='" + ((textBox2.Text.Replace("'", " ")).Replace(";", " ")).Replace(".", " ") + "' and usupermisos>0";
+                    string Query = "select usucodigo, usuclave from cinettickets.dbo.web_usuarios where usucodigo= '" + ((textBox1.Text.Replace("'", "")).Replace(";", "")).Replace("*", "") + "' and usuclave='" + ((textBox2.Text.Replace("'", "")).Replace(";", "")).Replace("*", "") + "' and usupermisos>0";
 
                     SqlCommand cmd = new SqlCommand(Query, conexion);
                     SqlDataReader dr = cmd.ExecuteReader();

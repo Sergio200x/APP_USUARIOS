@@ -100,10 +100,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("BatmanForeverAlternate", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(133, 22);
+            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 25.13208F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(133, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(143, 35);
+            this.label3.Size = new System.Drawing.Size(118, 43);
             this.label3.TabIndex = 12;
             this.label3.Text = "Login";
             // 
@@ -122,7 +122,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
+            this.Text = "Blanquea Usuarios- Login";
             this.ResumeLayout(false);
             this.PerformLayout();
 
