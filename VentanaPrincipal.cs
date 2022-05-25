@@ -120,7 +120,11 @@ namespace APP_USUARIOS
                 {
                     MessageBox.Show("Hubo un error, por favor volve a intentarlo");
                     conexion.Close();
-                }                
+                }
+                finally
+                {
+                    conexion.Close();
+                }
             }
             else
             {

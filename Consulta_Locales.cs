@@ -45,13 +45,17 @@ namespace APP_USUARIOS
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Por favor verifica el usuario a consultar");
+                    MessageBox.Show("Verificar local consultado");
+                    conexion.Close();
+                }
+                finally
+                {
                     conexion.Close();
                 }
             }
             else
             {
-                MessageBox.Show("Escribi el usuario a modificar");
+                MessageBox.Show("Escribi algun local para consultar");
             }
         }
 

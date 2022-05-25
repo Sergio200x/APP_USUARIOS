@@ -58,6 +58,10 @@ namespace APP_USUARIOS
                 {
                     conexion.Close();
                 }
+                finally
+                {
+                    conexion.Close();
+                }
             }
             else
             {
