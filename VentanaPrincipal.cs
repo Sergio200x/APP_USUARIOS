@@ -58,6 +58,7 @@ namespace APP_USUARIOS
                     MessageBox.Show("Por favor verifica el usuario a consultar");
                     conexion.Close();
                 }
+                
 
 
 

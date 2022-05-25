@@ -80,5 +80,12 @@ namespace APP_USUARIOS
         {
             Application.Exit();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Consulta_Locales v1 = new Consulta_Locales();
+            v1.Show();
+        }
     }
 }
