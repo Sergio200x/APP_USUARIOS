@@ -13,7 +13,7 @@ namespace APP_USUARIOS
 {
     public partial class Consulta_Locales : Form
     {
-        static string conexionstring = "server=190.210.227.194,33410 ; user=sa; password=Cinet1212 ; database=Mostaza_ERP ;integrated security=false";
+        static string conexionstring = "server=************ ; user=sa; password=******** ; database=******* ;integrated security=false";
         SqlConnection conexion = new SqlConnection(conexionstring);
         public Consulta_Locales()
         {
