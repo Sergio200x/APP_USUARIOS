@@ -13,7 +13,7 @@ namespace APP_USUARIOS
 {
     public partial class VentanaPrincipal : Form
     {
-        static string conexionstring = "server=cinettickets.ddns.net ; user=sa; password=mandragora15 ; database=cinettickets ;integrated security=false";
+        static string conexionstring = "server=********* ; user=sa; password=******** ; database=******** ;integrated security=false";
         SqlConnection conexion = new SqlConnection(conexionstring);
         public VentanaPrincipal()
         {
